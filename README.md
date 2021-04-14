@@ -1,8 +1,7 @@
 # env-command-unreal
 Access environment variables from blueprint.
 
-##
-Quick Install & Setup
+## Install & Setup
 
 1. Download [Latest Release](https://github.com/getnamo/env-command-unreal/releases)
 2. Create new or choose project.
