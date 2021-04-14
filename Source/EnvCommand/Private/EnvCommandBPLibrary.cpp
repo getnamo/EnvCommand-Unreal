@@ -19,13 +19,24 @@ namespace
 
 FString UEnvCommandBPLibrary::GetEnvironmentVariable(const FString& Name)
 {
-	char* ValueChars = getenv(StdString(Name).c_str());
 	FString Value = TEXT("");
+
+#if PLATFORM_WINDOWS
+	char* Buffer;
+	size_t Size;
+	if (_dupenv_s(&Buffer, &Size, StdString(Name).c_str()) == 0 && Buffer != nullptr)
+	{
+		Value = Buffer;
+		free(Buffer);
+	}
+#else
+	char* ValueChars = getenv(StdString(Name).c_str());
 
 	if (ValueChars != NULL) 
 	{
 		Value = ValueChars;
 	}
+#endif
 
 	return Value;
 }
@@ -33,5 +44,9 @@ FString UEnvCommandBPLibrary::GetEnvironmentVariable(const FString& Name)
 int32 UEnvCommandBPLibrary::SetEnvironmentVariable(const FString& Name, const FString& Value)
 {
 	FString Combined = Name + TEXT("=") + Value;
+#if PLATFORM_WINDOWS
+	return _putenv(StdString(Combined).c_str());
+#else
 	return putenv(StdString(Combined).c_str());
+#endif
 }
