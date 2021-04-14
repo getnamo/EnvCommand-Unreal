@@ -1,2 +1,2 @@
 # env-command-unreal
-Access environment commands from bps
+Access environment variables from blueprint.
