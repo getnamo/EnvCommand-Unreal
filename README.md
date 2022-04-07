@@ -1,9 +1,9 @@
-# env-command-unreal
+# EnvCommand-Unreal
 Access environment variables from blueprint.
 
 ## Install & Setup
 
-1. Download [Latest Release](https://github.com/getnamo/env-command-unreal/releases)
+1. Download [Latest Release](https://github.com/getnamo/EnvCommand-Unreal/releases)
 2. Create new or choose project.
 3. Browse to your project folder (typically found at ```Documents/Unreal Project/{Your Project Root}```)
 4. Copy ```Plugins``` folder into your Project root.
